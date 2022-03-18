@@ -170,3 +170,69 @@ sub polynomial_integrate{
     }
     return \@result;
 }
+
+sub complex_add{
+    my @a = @{$_[0]};
+    my @b = @{$_[1]};
+    my @result = ($a[0]+$b[0],$a[1]+$b[1]);
+    return \@result;
+}
+
+sub complex_multiply{
+    my @a = @{$_[0]};
+    my @b = @{$_[1]};
+    my @result = ($a[0]*$b[0]-$a[1]*$b[1],$a[0]*$b[1]+$a[1]*$b[0]);
+    return \@result;
+}
+
+sub complex_pow{
+   my @a = @{$_[0]};
+   my $n = $_[1];
+   my @result = (1,0);
+   for(my $i = 0; $i<$n; $i=$i+1){
+      @result = @{complex_multiply(\@result,\@a)};
+   }
+   return \@result;
+}
+
+sub complex_conjugate{
+    my @a = @{$_[0]};
+    my @result = ($a[0],-$a[1]);
+    return \@result;
+}
+sub complex_reciprocal{
+    my @a = @{$_[0]};
+    my @ac = @{complex_conjugate(\@a)};
+    my @temp = @{complex_multiply(\@a,\@ac)};
+    if($temp[0] == 0){
+        return undef;
+    }
+    my @result = ($ac[0]/$temp[0],$ac[1]/$temp[0]);
+    return \@result
+}
+
+sub complex_modulus{
+    return sqrt($_[0]**2 + $_[1]**2);
+}
+
+sub complex_polynomial_eval{
+    # f(z) = result
+    my @poly = @{$_[0]};
+    my @z = @{$_[1]};
+    
+    }
+
+
+###In progress A-E Method for root solving. Downside: requires complex polynomials###
+sub aberth_erlich_method{
+    my @poly = @{$_[0]};
+    my $n = @poly;
+    
+    sub f{
+        return polynomial_eval(\@poly,$_[0]);
+    }
+    
+    sub df{
+        
+    }
+}
