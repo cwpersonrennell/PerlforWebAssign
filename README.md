@@ -26,7 +26,7 @@ Example usage:
    #Note the use of @{} around the function will convert the reference back to a list. This is a nuance of perl which is required since functions can only return numerical values or references.
    
    
-# Subroutine: polynomial_multiply\(\@a, \\@b)
+# Subroutine: polynomial_multiply(\\@a, \\@b)
 
 Inputs: Two references to lists of coefficients
 
