@@ -3,14 +3,13 @@
 Given an list (c0, c1, c2, c3, ...), the following methods will treat the list as if it were a polynomial c0 + c1 x +c2 x^2 +c3 x^3 ....
 
 
-Subroutine: polynomial_eval(\@poly,$x)
+# Subroutine: polynomial_eval(\@poly,$x)
 
 Inputs: Reference to list containing polynomial coefficients, real input value.
 
 Outputs: Real output value of polynomial function
 
-Subroutine: polynomial_add(\@a, \@b)
-
+# Subroutine: polynomial_add(\@a, \@b)
 
 Inputs: Two references to lists of coefficients
 
@@ -27,21 +26,21 @@ Example usage:
    #Note the use of @{} around the function will convert the reference back to a list. This is a nuance of perl which is required since functions can only return numerical values or references.
    
    
-Subroutine: polynomial_multiply(\@a, \@b)
+# Subroutine: polynomial_multiply(\@a, \@b)
 
 Inputs: Two references to lists of coefficients
 
 Outputs: Reference to new list of coefficients which is the polynomial product.
 
 
-Subroutine: polynomial_from_zeros(\@zeros)
+# Subroutine: polynomial_from_zeros(\@zeros)
 
 Inputs: Single reference to list of coefficients
 
 Outputs: Reference to new list of coefficients which is the polynomial derived from the zeros provided. Chooses 1 as leading coefficient.
 
 
-Subroutine: polynomial_derivative(\@poly)
+# Subroutine: polynomial_derivative(\@poly)
 
 Inputs: Reference to lists of coefficients
 
