@@ -181,13 +181,18 @@ sub complex_add{
 sub complex_multiply{
     my @a = @{$_[0]};
     my @b = @{$_[1]};
+    print("\ncomplex_multiply((@a),(@b))\n");
+    print("\n($a[0] x $b[0] '-' $a[1] x $b[1], $a[0] x $b[1] '+' $a[1] x $b[0])\n");
     my @result = ($a[0]*$b[0]-$a[1]*$b[1],$a[0]*$b[1]+$a[1]*$b[0]);
+    print("(@a) x (@b) = @result\n");
     return \@result;
 }
 
 sub complex_pow{
+    
    my @a = @{$_[0]};
    my $n = $_[1];
+   print("\ncomplex_pow((@a),$n)\n");
    my @result = (1,0);
    for(my $i = 0; $i<$n; $i=$i+1){
       @result = @{complex_multiply(\@result,\@a)};
@@ -216,11 +221,21 @@ sub complex_modulus{
 }
 
 sub complex_polynomial_eval{
-    # f(z) = result
+    # f(z) = result, f has REAL coeffiecients
     my @poly = @{$_[0]};
     my @z = @{$_[1]};
-    
+    my @result = ($poly[0],0);
+    my $n = @poly;
+    for(my $i  = 1; $i<$n;$i++){
+        my @c = ($poly[$i],0);
+        print("\nZ:@z\nC: @c,\n$i: ");
+        print("@{complex_multiply(\@c,@{complex_pow(\@z,$i)} )}\n");
+        my @next_term = @{complex_multiply(\@c,complex_pow(\@z,$i) )};
+        print("\nNext Term: @next_term\n");
+        @result = @{complex_add(\@result,\@next_term )};
     }
+    return \@result;
+}
 
 
 ###In progress A-E Method for root solving. Downside: requires complex polynomials###
@@ -229,7 +244,8 @@ sub aberth_erlich_method{
     my $n = @poly;
     
     sub f{
-        return polynomial_eval(\@poly,$_[0]);
+        my @z = ($_[0],$_[1]);
+        return complex_polynomial_eval(\@poly,\@z);
     }
     
     sub df{
