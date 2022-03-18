@@ -16,13 +16,13 @@ Inputs: Two references to lists of coefficients
 Outputs: Reference to new list of coefficients which is the polynomial sum.
 
 Example usage:
-
+```perl
    @a = (1,0,1) #1 + x^2
    
    @b = (1,1)   #1 + x
    
    @c = @{polynomial_add(\\@a,\\@b)}   # 2 + x + x^2
-   
+```
    #Note the use of @{} around the function will convert the reference back to a list. This is a nuance of perl which is required since functions can only return numerical values or references.
    
    
