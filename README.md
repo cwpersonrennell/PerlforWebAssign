@@ -21,7 +21,7 @@ Example usage:
    
    @b = (1,1)   #1 + x
    
-   @c = @{polynomial_add(\\@a,\\@b)}   # 2 + x + x^2
+   @c = @{polynomial_add(\@a,\@b)}   # 2 + x + x^2
 ```
    #Note the use of @{} around the function will convert the reference back to a list. This is a nuance of perl which is required since functions can only return numerical values or references.
    
