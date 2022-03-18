@@ -242,13 +242,39 @@ sub complex_polynomial_eval{
 sub aberth_erlich_method{
     my @poly = @{$_[0]};
     my $n = @poly;
-    
+    my @dpoly = @{polynomial_derivative(\@poly)};
     sub f{
         my @z = ($_[0],$_[1]);
         return complex_polynomial_eval(\@poly,\@z);
     }
     
     sub df{
-        
+        my @z = ($_[0],$_[1]);
+        return complex_polynomial_eval(\@dpoly,\@z);
     }
+    
+    my $guess = ();
+    for(my $i = 0;$i<$n;$i=$i+1){
+       $guess[$i] = rand(1000);
+       $guess[$i+1] = rand(1000);
+    }
+    my $w = ();
+    
+    for(my $i = 0;$i<$n; $i = $i+1){
+        my @z = ($guess[$i],$guess[$i+1]);
+        my @num = complex_divide(f(@z),df(@z));
+        my @sum = (0,0);
+        for(my $j = 0; $j<$n;$j = $j+1){
+            if($j == $i){
+                next;
+            }
+            @sum = @{complex_add(\@sum,complex_reciprocal(complex_add($guess[$i],complex_negate($guess[$j]))))};
+        }
+        my @one = (1,0);
+        my @den = @{complex_add(\@one,complex_negate(complex_multiply(\@num,\@sum)))};
+        my @_w_ = @{complex_divide(\@num,\@den)};
+        $w[$i]  = $_w_[0];
+        $w[$i+1]= $_w_[1];
+    }
+    
 }
