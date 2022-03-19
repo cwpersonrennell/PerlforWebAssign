@@ -237,10 +237,20 @@ sub complex_polynomial_eval{
     return \@result;
 }
 
+sub complex_negate{
+    my @a = @{$_[0]};
+    return (-$a[0],-$a[1]);
+}
 
+sub norm{
+    my $n = @_;
+    
+}
 ###In progress A-E Method for root solving. Downside: requires complex polynomials###
 sub aberth_erlich_method{
     my @poly = @{$_[0]};
+    my $PRECISION = $_[1];
+    my $ERROR = 10**(-$PRECISION);
     my $n = @poly;
     my @dpoly = @{polynomial_derivative(\@poly)};
     sub f{
