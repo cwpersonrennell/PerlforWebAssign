@@ -60,12 +60,16 @@ class ComplexN{
     if(this.re ==0 && this.im == 0)
       return "";
     if(this.re == 1 && this.im == 0)
-      return `${variable}`;
+      if(leading)
+        return `${variable}`;
+      return `+${variable}`
     if(this.re == -1 && this.im == 0)
       return `-${variable}`;
     if(this.re == 0)
       if(Math.abs(this.im) == 1)
-        return `${signB}${B}i${variable}`; 
+        if(leading)
+          return `${signB}${B}i${variable}`; 
+        return `+${signB}${B}i${variable}`;
     if(leading)
       return `(${this.re}${signB}${B})${variable}`;
     return `+(${signA}${A}${signB}${B})${variable}`;
@@ -101,7 +105,7 @@ class Polynomial{
   latex(){
     let result = ``;
     let variable = "";
-    if(this.deg>1){
+    if(this.degree>1){
       variable = `x^{${this.n-1}}`;
       result = `${this._polynomial_array[this.n-1].coef(true,variable)}`;
     }
