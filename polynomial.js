@@ -61,9 +61,11 @@ class Polynomial{
     this.degree = n+1;
     this.n = n;
     for(let i = 0;i<n;i++){
+      console.log(i);
       let coef = coefs[i];
       if(typeof coef == 'number')
         coef = new ComplexN(coef,0);
+      console.log(coef);
       this._polynomial_array.append(coef);
     } 
   }
