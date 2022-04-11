@@ -26,4 +26,17 @@ class ComplexN{
     }
     return result;
   }
+  
+  conjugate(){
+    return new ComplexN(this.re,-this.im);
+  }
+  
+  modulus(){
+    return Math.sqrt(this.re*this.re+this.im*this.im);
+  }
+  
+  reciprocal(){
+    let den = this.multiply(this.conjugate);
+    return new ComplexN(this.re/den,this.im/den); 
+  }
 }
