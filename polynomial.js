@@ -59,17 +59,20 @@ class ComplexN{
     signB = this.im==0?"":signB;
     if(this.re ==0 && this.im == 0)
       return "";
-    if(this.re == 1 && this.im == 0)
+    if(this.re == 1 && this.im == 0){
       if(leading)
         return `${variable}`;
-      return `+${variable}`
+      return `+${variable}`;
+    }
     if(this.re == -1 && this.im == 0)
       return `-${variable}`;
-    if(this.re == 0)
-      if(Math.abs(this.im) == 1)
+    if(this.re == 0){
+      if(Math.abs(this.im) == 1){
         if(leading)
           return `${signB}${B}i${variable}`; 
         return `+${signB}${B}i${variable}`;
+      }
+    }
     if(leading)
       return `(${this.re}${signB}${B})${variable}`;
     return `+(${signA}${A}${signB}${B})${variable}`;
