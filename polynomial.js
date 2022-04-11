@@ -40,10 +40,21 @@ class ComplexN{
     let den = this.multiply(this.conjugate);
     return new ComplexN(this.re/den.re,this.im/den.re); 
   }
+  
+  get str(){
+    let A = this.re==0?"":this.re;
+    let B = this.im==0?"":`${Math.abs(this.im)}i`;
+    let signB = this.im<0?"-":"+";
+    signB = this.im==0?"":signB;
+    if(this.re ==0 && this.im == 0)
+      return "0";
+    return `${A}${signB}${B}`;
+    
+  }
 }
 
 
-class Polnomial{
+class Polynomial{
   constructor(coefs){
     this._polynomial_array = [];
     let n = coefs.length;
@@ -66,5 +77,7 @@ class Polnomial{
       result = result.add(this._polynomial_array[i].multiply(x.pow(i)));
     }
     return result;
+  }
+  latex(){
   }
 }
