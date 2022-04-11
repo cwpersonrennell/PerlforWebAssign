@@ -37,7 +37,7 @@ class ComplexN{
   
   reciprocal(){
     let den = this.multiply(this.conjugate);
-    return new ComplexN(this.re/den,this.im/den); 
+    return new ComplexN(this.re/den.re,this.im/den.re); 
   }
 }
 
