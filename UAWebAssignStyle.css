@@ -27,6 +27,6 @@ background-size:50%;
   left: 0;
   bottom: 0;
   right: 0;
-  position: absolute;
+  position: relative;
   z-index: -1
 }
