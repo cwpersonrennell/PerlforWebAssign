@@ -96,7 +96,7 @@ class Polynomial{
     return result;
   }
   latex(){
-    let result = `${this._polynomial_array[this.n].coef()}x^{${this.deg}}`;
+    let result = `${this._polynomial_array[this.n-1].coef()}x^{${this.deg}}`;
     for(let i = this.n-2;i>=0;i--){
       result = result+`${this._polynomial_array[i].coef(false)}`
     }
