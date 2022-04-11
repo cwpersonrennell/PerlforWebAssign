@@ -1,0 +1,32 @@
+@import url("https://cdn.digital.arizona.edu/lib/ua-brand-icons/v2.0.1/ua-brand-icons.min.css");
+@import url("https://cdn.uadigital.arizona.edu/lib/ua-brand-fonts/v1.0.1/milo.min.css");
+div.standard.qContent.container{
+background:revert;
+}
+
+body{
+}
+table, iframe, .qContent, table.watexfraction{
+font-family:MiloSerifWeb;
+font-size:20px;
+}
+.UALogo{
+max-height: 5em;
+break-after:right;
+float:right;
+}
+div.standard.qContent.container{
+position:relative;
+}
+div.standard.qContent.container::before{
+content:"";
+background: no-repeat center url("https://brand.arizona.edu/sites/default/files/imported/ua_horiz_rgb_4.svg");
+background-size:50%;
+  opacity: 0.05;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1
+}
