@@ -41,7 +41,7 @@ class ComplexN{
     return new ComplexN(this.re/den.re,this.im/den.re); 
   }
   
-  get str(leading = true){
+  get str(){
     
     let A = this.re==0?"":this.re;
     let B = this.im==0?"":`${Math.abs(this.im)}i`;
