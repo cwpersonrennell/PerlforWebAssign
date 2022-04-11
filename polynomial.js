@@ -96,10 +96,12 @@ class Polynomial{
     return result;
   }
   latex(){
-    let result = `${this._polynomial_array[this.n-1].coef()}x^{${this.deg}}`;
-    for(let i = this.n-2;i>=0;i--){
-      result = result+`${this._polynomial_array[i].coef(false)}`
+    let result = `${this._polynomial_array[this.n-1].coef()}x^{${this.n-1}}`;
+    for(let i = this.n-2;i>1;i--){
+      result = result+`${this._polynomial_array[i].coef(false)}x^{i}`;
     }
+    result = result+`${this._polynomial_array[1].coef(false)}x`;
+    result = result+`${this._polynomial_array[0].coef(false)}`;
     return result;
   }
 }
