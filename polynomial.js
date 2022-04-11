@@ -41,10 +41,12 @@ class ComplexN{
     return new ComplexN(this.re/den.re,this.im/den.re); 
   }
   
-  get str(){
+  get str(leading = true){
+    
     let A = this.re==0?"":this.re;
     let B = this.im==0?"":`${Math.abs(this.im)}i`;
     let signB = this.im<0?"-":"+";
+    
     signB = this.im==0?"":signB;
     if(this.re ==0 && this.im == 0)
       return "0";
@@ -60,10 +62,13 @@ class ComplexN{
     signA = this.re==0?"":signA;
     
     if(this.im == 0){
+
       if(this.re == 0)
         return "";
       
       if(Math.abs(this.re) == 1){
+         if(variable == "")
+           variable = Math.abs(this.re);
         if(leading){
           if(this.re>0)
             return `${variable}`;
@@ -140,7 +145,7 @@ class Polynomial{
       result = result+`${this._polynomial_array[i].coef(false,variable)}`;
     }
     result = result+`${this._polynomial_array[1].coef(false,"x")}`;
-    result = result+`${this._polynomial_array[0].coef(false,"")}`;
+    result = result+`${this._polynomial_array[0].coef(false,``)}`;
     return result;
   }
 }
