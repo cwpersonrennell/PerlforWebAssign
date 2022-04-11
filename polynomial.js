@@ -19,6 +19,7 @@ class ComplexN{
   copy(){
     return new ComplexN(this.re,this.im);
   }
+  
   pow(n){
     let result = new ComplexN(1,0);
     for(let i = 0;i<n;i++){
@@ -27,15 +28,15 @@ class ComplexN{
     return result;
   }
   
-  conjugate(){
+  get conjugate(){
     return new ComplexN(this.re,-this.im);
   }
   
-  modulus(){
+  get modulus(){
     return Math.sqrt(this.re*this.re+this.im*this.im);
   }
   
-  reciprocal(){
+  get reciprocal(){
     let den = this.multiply(this.conjugate);
     return new ComplexN(this.re/den.re,this.im/den.re); 
   }
