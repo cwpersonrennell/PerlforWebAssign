@@ -10,6 +10,10 @@ table, iframe, .qContent, table.watexfraction{
 font-family:MiloSerifWeb;
 font-size:20px;
 }
+
+h1,h2,h3,h4,h5,h6{
+font-family:MiloSerifWeb;
+}
 .UALogo{
 max-height: 5em;
 break-after:right;
