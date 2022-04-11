@@ -15,7 +15,7 @@ h1,h2,h3,h4,h5,h6{
 font-family:MiloSerifWeb;
 }
 
-div.UALogo::before, div.standard.qContent.container{
+div.UALogo, div.standard.qContent.container{
 position:relative;
 }
 div.UALogo::before, div.standard.qContent.container::before{
