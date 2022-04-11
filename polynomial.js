@@ -40,3 +40,18 @@ class ComplexN{
     return new ComplexN(this.re/den,this.im/den); 
   }
 }
+
+
+class Polnomial{
+  constructor(coefs){
+    this._polynomial_array = [];
+    let n = coefs.length;
+    for(let i = 0;i<n;i++){
+      let coef = coefs[i];
+      if(typeof coef == 'number')
+        coef = new ComplexN(coef,0);
+      this._polynomial_array.append(coef);
+    }
+    
+  }
+}
