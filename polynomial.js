@@ -47,12 +47,24 @@ class Polnomial{
   constructor(coefs){
     this._polynomial_array = [];
     let n = coefs.length;
+    this.degree = n+1;
+    this.n = n;
     for(let i = 0;i<n;i++){
       let coef = coefs[i];
       if(typeof coef == 'number')
         coef = new ComplexN(coef,0);
       this._polynomial_array.append(coef);
-    }
+    } 
+  }
+  
+  eval(x){
+    let result = new ComplexN(0,0);
+    if(typeof x == 'number')
+      x = new ComplexN(x,0);
     
+    for(let i = 0;i<this.n;i++){
+      result = result.add(this._polynomial_array[i].multiply(x.pow(i)));
+    }
+    return result;
   }
 }
