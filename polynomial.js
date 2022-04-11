@@ -53,26 +53,49 @@ class ComplexN{
   
   coef(leading=true,variable="x"){    
     let A = this.re==0?"":Math.abs(this.re);
-    let B = this.im==0?"":`${Math.abs(this.im)}i`;
+    let B = this.im==0?"":Math.abs(this.im);
     let signB = this.im<0?"-":"+";
     let signA = this.re<0?"-":"+";
     signB = this.im==0?"":signB;
-    if(this.re ==0 && this.im == 0)
-      return "";
-    if(this.re == 1 && this.im == 0){
+    signA = this.re==0?"":signA;
+    
+    if(this.im == 0){
+      if(this.re == 0)
+        return "";
+      
+      if(Math.abs(this.re) == 1){
+        if(leading){
+          if(this.re>0)
+            return `${variable}`;
+          return `-${variable}`;
+        }
+        return `${signA}${variable}`;
+      }
+      
       if(leading)
-        return `${variable}`;
-      return `+${variable}`;
+        if(this.re>0)
+          return `${A}${variable}`;
+      
+      return `${signA}${A}${variable}`;
     }
-    if(this.re == -1 && this.im == 0)
-      return `-${variable}`;
+    
     if(this.re == 0){
       if(Math.abs(this.im) == 1){
-        if(leading)
-          return `${signB}${B}i${variable}`; 
-        return `+${signB}${B}i${variable}`;
+        if(leading){
+          if(this.im>0) 
+            return `i ${variable}`;
+          return `-i ${variable}`;
+        }
+        return `${signB}i ${variable}`;
       }
+      if(leading){
+        if(this.im>0)
+          return `${B}i${variable}`;
+        return `-${B}i${variable}`;
+      }
+      return `${signB}${B}i${variable}`;
     }
+    
     if(leading)
       return `(${this.re}${signB}${B})${variable}`;
     return `+(${signA}${A}${signB}${B})${variable}`;
