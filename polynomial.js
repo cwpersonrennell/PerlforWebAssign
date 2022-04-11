@@ -49,8 +49,25 @@ class ComplexN{
     if(this.re ==0 && this.im == 0)
       return "0";
     return `${A}${signB}${B}`;
-    
   }
+  
+  coef(leading=true){    
+    let A = this.re==0?"":Math.abs(this.re);
+    let B = this.im==0?"":`${Math.abs(this.im)}i`;
+    let signB = this.im<0?"-":"+";
+    let signA = this.re<0?"-":"+";
+    signB = this.im==0?"":signB;
+    if(this.re ==0 && this.im == 0)
+      return "";
+    if(this.re == 1 && this.im == 0)
+      return "";
+    if(this.re == -1 && this.im == 0)
+      return "-"
+    if(leading)
+      return `${this.re}${signB}${B}`;
+    return `${signA}${A}${signB}${B}`
+  }
+  
 }
 
 
