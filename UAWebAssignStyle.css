@@ -19,10 +19,10 @@ max-height: 5em;
 break-after:right;
 float:right;
 }
-div.standard.qContent.container{
+div.css-5ijub1, div.standard.qContent.container{
 position:relative;
 }
-div.standard.qContent.container::before{
+div.css-5ijub1, div.standard.qContent.container::before{
 content:"";
 background: no-repeat center url("https://brand.arizona.edu/sites/default/files/imported/ua_horiz_rgb_4.svg");
 background-size:50%;
