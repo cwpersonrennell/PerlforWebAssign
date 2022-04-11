@@ -78,7 +78,7 @@ class Polynomial{
   constructor(coefs){
     this._polynomial_array = [];
     let n = coefs.length;
-    this.degree = n+1;
+    this.degree = n;
     this.n = n;
     for(let i = 0;i<n;i++){
       let coef = coefs[i];
