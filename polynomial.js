@@ -51,7 +51,7 @@ class ComplexN{
     return `${A}${signB}${B}`;
   }
   
-  coef(leading=true){    
+  coef(leading=true,variable="x"){    
     let A = this.re==0?"":Math.abs(this.re);
     let B = this.im==0?"":`${Math.abs(this.im)}i`;
     let signB = this.im<0?"-":"+";
@@ -60,12 +60,15 @@ class ComplexN{
     if(this.re ==0 && this.im == 0)
       return "";
     if(this.re == 1 && this.im == 0)
-      return "";
+      return `${variable}`;
     if(this.re == -1 && this.im == 0)
-      return "-"
+      return `-${variable}`;
+    if(this.re == 0)
+      if(Math.abs(this.im) == 1)
+        return `${signB}${B}i${variable}`; 
     if(leading)
-      return `${this.re}${signB}${B}`;
-    return `${signA}${A}${signB}${B}`
+      return `(${this.re}${signB}${B})${variable}`;
+    return `+(${signA}${A}${signB}${B})${variable}`;
   }
   
 }
@@ -96,12 +99,18 @@ class Polynomial{
     return result;
   }
   latex(){
-    let result = `${this._polynomial_array[this.n-1].coef()}x^{${this.n-1}}`;
-    for(let i = this.n-2;i>1;i--){
-      result = result+`${this._polynomial_array[i].coef(false)}x^{i}`;
+    let result = ``;
+    let variable = "";
+    if(this.deg>1){
+      variable = `x^{${this.n-1}}`;
+      result = `${this._polynomial_array[this.n-1].coef(true,variable)}`;
     }
-    result = result+`${this._polynomial_array[1].coef(false)}x`;
-    result = result+`${this._polynomial_array[0].coef(false)}`;
+    for(let i = this.n-2;i>1;i--){
+      variable = `x^{${i}}`;
+      result = result+`${this._polynomial_array[i].coef(false,variable)}`;
+    }
+    result = result+`${this._polynomial_array[1].coef(false,"x")}`;
+    result = result+`${this._polynomial_array[0].coef(false,"")}`;
     return result;
   }
 }
